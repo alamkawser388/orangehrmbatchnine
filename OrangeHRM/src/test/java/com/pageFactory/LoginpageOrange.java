@@ -29,8 +29,7 @@ public class LoginpageOrange {
 		
 	}
 		
-	
-	
-		
+	//@findBy (how= How.XPATH, using ="//*[contains(text(),'Welcome')]"))
+	//	private WebElement Welcome
 
 }

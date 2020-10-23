@@ -1,10 +1,15 @@
 package com.stepDef;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.pageFactory.LoginpageOrange;
 
@@ -49,7 +54,11 @@ public class LoginSteps {
 
 	@Then("^user click the Sign in button$")
 	public void user_click_the_Sign_in_button() throws Throwable {
-		driver.findElement(By.xpath("//*[@id='btnLogin']")).click();
+		
+		//driver.findElement(By.xpath("//*[@id='btnLogin']")).click();
+		WebElement login = driver.findElement(By.xpath("//*[@id='btnLogin']"));
+		login.click();
+		
 		
 		//String actual = driver.getTitle();
 		//String expected = "OrangeHRM";
@@ -60,14 +69,18 @@ public class LoginSteps {
 
 	@When("^user click on log out button for Orange Hrm$")
 	public void user_click_on_log_out_button_for_Orange_Hrm() throws Throwable {
-		//driver.findElement(By.xpath("//*[@id='welcome']")).click();
-		//driver.findElement(By.xpath("/logout")).click();
 		
 		
+		WebElement welcome = driver.findElement(By.xpath("//*[contains(text(),'Welcome')]"));
+		welcome.click();
+		WebElement logout = driver.findElement(By.xpath("//*[contains(text(),'Logout')]"));
+	
+		WebDriverWait wait = new WebDriverWait(driver,10);
+		//wait.until(ExpectedConditions.visibilityOf(logout)).click();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		logout.click();
 		
-		//String actual = driver.getTitle();
-		//String expected = "OrangeHRM";
-		//Assert.assertTrue("This Title is Wrong",actual.contains(expected));
+		
 		
 
 	}
