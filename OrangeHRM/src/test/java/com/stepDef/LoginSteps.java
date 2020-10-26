@@ -75,7 +75,7 @@ public class LoginSteps {
 		welcome.click();
 		WebElement logout = driver.findElement(By.xpath("//*[contains(text(),'Logout')]"));
 	
-		WebDriverWait wait = new WebDriverWait(driver,10);
+		//WebDriverWait wait = new WebDriverWait(driver,10);
 		//wait.until(ExpectedConditions.visibilityOf(logout)).click();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		logout.click();
