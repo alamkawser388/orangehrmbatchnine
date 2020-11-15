@@ -27,7 +27,7 @@ public class LoginSteps {
 		System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Selenium\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("https://opensource-demo.orangehrmlive.com/");
-		
+		driver.manage().window().maximize();
 		ruhi= PageFactory.initElements(driver, LoginpageOrange.class);
 
 	}
@@ -38,7 +38,7 @@ public class LoginSteps {
 		String expected = "OrangeHRM";
 		Assert.assertTrue("This Title is Wrong",actual.contains(expected));
 		
-
+        
 	}
 
 	@Then("^user enter a valid username and password$")
@@ -74,13 +74,13 @@ public class LoginSteps {
 		WebElement welcome = driver.findElement(By.xpath("//*[contains(text(),'Welcome')]"));
 		welcome.click();
 		WebElement logout = driver.findElement(By.xpath("//*[contains(text(),'Logout')]"));
-	
-		//WebDriverWait wait = new WebDriverWait(driver,10);
-		//wait.until(ExpectedConditions.visibilityOf(logout)).click();
+		
+		WebDriverWait wait = new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.visibilityOf(logout)).click();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		logout.click();
 		
-		
+		driver.close();
 		
 
 	}

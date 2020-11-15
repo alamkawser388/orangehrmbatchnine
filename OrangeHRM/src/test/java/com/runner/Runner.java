@@ -1,5 +1,4 @@
 
-
 package com.runner;
 
 import org.junit.runner.RunWith;
@@ -11,12 +10,11 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		
 		features = "src/test/resources",
-		glue= {"com.stepDef"},
+		glue = {"com.stepDef"},
 		tags = {"@regressiontest"},
 		plugin = {"com.cucumber.listener.ExtentCucumberFormatter:target/report.html"},
 		monochrome = true
-			
-		
+				
 		
 )
 
